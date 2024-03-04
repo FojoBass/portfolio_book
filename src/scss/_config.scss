@@ -1,0 +1,33 @@
+$bg_drk: #000;
+$bg_cover: linear-gradient(45deg, #03606aec, #28dcc4);
+$bg_cover2: #00191b;
+$bg_page: #fff;
+$trans_fast: 0.3s;
+$trans_mid: 0.5s;
+$trans_slow: 1s;
+$brd_rad_cover: 0 10px 10px 0;
+
+@mixin flex($justify, $align, $dir: row) {
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $dir;
+  display: flex;
+}
+
+@mixin position($type, $x, $y, $x_value, $y_value) {
+  position: $type;
+  #{$x}: $x_value;
+  #{$y}: $y_value;
+}
+
+@mixin uniTranslate($dir, $val) {
+  transform: translate#{$dir }($val);
+}
+
+@mixin biTranslate($x, $y) {
+  transform: translate($x, $y);
+}
+
+@mixin uniRotate($axis, $deg) {
+  transform: rotate#{$axis }($deg);
+}

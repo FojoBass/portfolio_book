@@ -1,0 +1,32 @@
+@use 'config' as *;
+
+#content_wrapper {
+  visibility: hidden;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  display: flex;
+}
+
+.leaf {
+  width: 50%;
+  height: 95%;
+  transform-origin: right;
+  transform: translateZ(1px) rotateY(180deg);
+  z-index: 100;
+  position: relative;
+  transition: all ease-in-out $trans_slow;
+  z-index: -1;
+
+  .page {
+    @include position(absolute, right, top, 0, 0);
+    background-color: $bg_page;
+    height: 100%;
+    width: 95%;
+    // border-radius: 10px 0 0 10px;
+
+    &.front {
+      transform: rotateY(180deg) translateZ(1px);
+    }
+  }
+}

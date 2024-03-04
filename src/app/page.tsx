@@ -1,95 +1,40 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import LeafletLayout from '@/LeafletLayout';
+import React, { useRef } from 'react';
 
-export default function Home() {
+const Home = () => {
+  const wrapRef = useRef<null | HTMLDivElement>(null);
+  const leftCoverRef = useRef<null | HTMLDivElement>(null);
+
+  const hanldeBookOpen = () => {
+    console.log('clciked');
+
+    if (wrapRef.current && leftCoverRef.current) {
+      wrapRef.current.classList.add('open');
+      leftCoverRef.current && leftCoverRef.current.classList.add('turn');
+    }
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <section id='book'>
+      <div className='cover_wrapper' ref={wrapRef}>
+        <div className='cover left' ref={leftCoverRef}>
+          <h2>John's Portfolio</h2>
+          <button className='open_btn' onClick={hanldeBookOpen}>
+            Open
+          </button>
         </div>
+        <div className='cover right'></div>
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div id='content_wrapper'>
+        <LeafletLayout id='1'>
+          <div className='page front'>Front</div>
+          <div className='page back'>Back</div>
+        </LeafletLayout>
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </section>
   );
-}
+};
+
+export default Home;
