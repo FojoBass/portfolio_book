@@ -1,0 +1,91 @@
+@use 'config' as *;
+
+.profile {
+  @include flex(flex-start, center, column);
+
+  .img_wrapper {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 5px;
+    background-color: $clr_acc;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 50%;
+    }
+  }
+
+  .name {
+    font-size: 2.5rem;
+    font-family: verdana;
+  }
+
+  .title {
+    margin-block: 10px;
+    font-size: 1.5rem;
+    color: $clr_acc;
+  }
+
+  .about {
+    line-height: 1.7;
+    letter-spacing: 0.1rem;
+  }
+
+  .btns_wrapper {
+    margin-top: 40px;
+    @include flex(center, center);
+    gap: 20px;
+  }
+}
+
+.services_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 30px;
+
+  .serv_box {
+    border: 2px solid $clr_acc;
+    @include flex(flex-start, center, column);
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    transition: ease $trans_mid;
+
+    &:hover {
+      box-shadow: 0 0 10px #80808084;
+    }
+
+    .icon {
+      color: $clr_acc;
+      font-size: 2rem;
+    }
+
+    .title {
+      font-family: verdana;
+      font-size: 1rem;
+    }
+
+    .info {
+      padding-block: 15px;
+      letter-spacing: 0.1rem;
+      line-height: 1;
+    }
+
+    .btn {
+      font-size: 1rem;
+      padding: 10px 20px;
+      transition: ease $trans_mid;
+
+      &:hover {
+        background-color: $clr_acc;
+        color: $clr_txt2;
+      }
+    }
+  }
+}

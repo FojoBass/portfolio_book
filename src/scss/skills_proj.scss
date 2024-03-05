@@ -1,0 +1,123 @@
+@use 'config' as *;
+
+.skills_wrapper {
+  @include flex(flex-start, flex-start, column);
+  gap: 30px;
+
+  .skill_wrapper {
+    width: 100%;
+    h3 {
+      font-family: verdana;
+      margin-bottom: 10px;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+
+      .skill {
+        position: relative;
+
+        &:hover {
+          .content {
+            filter: blur(2px) contrast(0);
+            transform: rotateX(35deg) translateZ(65px) translateY(35px)
+              translateX(-5px);
+            opacity: 0.7;
+          }
+
+          .exp {
+            scale: 1;
+            opacity: 1;
+          }
+        }
+
+        .content {
+          width: 100%;
+          border: 2px solid $clr_acc;
+          padding: 10px;
+          border-radius: 5px;
+          @include flex(center, center, column);
+          font-size: 1.2rem;
+          font-weight: 600;
+          transition: ease $trans_mid;
+          transform-origin: bottom;
+
+          .icon {
+            font-size: 2.5rem;
+            color: $clr_acc;
+          }
+        }
+
+        .exp {
+          @include position(absolute, left, top, 50%, 50%);
+          font-size: 2rem;
+          transform: translate(-50%, -50%) translateZ(10px);
+          color: $clr_acc;
+          font-weight: bold;
+          opacity: 0;
+          scale: 0.5;
+          transition: ease $trans_mid;
+        }
+      }
+    }
+  }
+}
+
+.proj {
+  .img_wrapper {
+    width: 100%;
+    height: 250px;
+    border: 2px solid $clr_acc;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &:hover img {
+      transform: scale(1.1);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: ease $trans_mid;
+      transform: scale(1);
+      display: block;
+    }
+  }
+
+  .proj_title_wrapper {
+    @include flex(space-between, center);
+    margin-block: 20px;
+
+    .title {
+      font-family: verdana;
+    }
+
+    .preview_btn {
+      color: $clr_acc;
+      font-size: 1.1rem;
+      font-family: monospace;
+    }
+  }
+
+  .info_wrapper {
+    h4 {
+      font-family: verdana;
+      margin-bottom: 10px;
+    }
+
+    .info {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      text-align: justify;
+    }
+  }
+
+  .btns_wrapper {
+    @include flex(space-evenly, center);
+    margin-top: 20px;
+  }
+}

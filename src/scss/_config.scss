@@ -1,11 +1,14 @@
-$bg_drk: #000;
-$bg_cover: linear-gradient(45deg, #03606aec, #28dcc4);
+$bg_drk: #001317;
+$bg_cover: linear-gradient(45deg, #00abf0, #006e9a);
 $bg_cover2: #00191b;
-$bg_page: #fff;
+$bg_page: linear-gradient(90deg, #fff 50%, #dddddd);
 $trans_fast: 0.3s;
 $trans_mid: 0.5s;
 $trans_slow: 1s;
 $brd_rad_cover: 0 10px 10px 0;
+$clr_acc: #00abf0;
+$clr_txt1: #333333;
+$clr_txt2: #fff;
 
 @mixin flex($justify, $align, $dir: row) {
   justify-content: $justify;

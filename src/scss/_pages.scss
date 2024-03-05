@@ -1,32 +1,136 @@
 @use 'config' as *;
 
 #content_wrapper {
+  opacity: 0;
   visibility: hidden;
   height: 100%;
   width: 100%;
   align-items: center;
   display: flex;
+  transition: opacity ease 0.1s 300ms, transform ease 10ms 0.8s;
+  position: relative;
+  transform: translateX(4px);
 }
 
 .leaf {
+  @include position(absolute, left, top, 0, 50%);
   width: 50%;
   height: 95%;
   transform-origin: right;
-  transform: translateZ(1px) rotateY(180deg);
-  z-index: 100;
-  position: relative;
-  transition: all ease-in-out $trans_slow;
-  z-index: -1;
+  transform: translateY(-50%) translateZ(1px) rotateY(180deg);
+  transition: transform ease-in-out $trans_slow;
+
+  &:first-of-type {
+    background: none;
+  }
+
+  &.turn {
+    transform: translateY(-50%) translateZ(1px) rotateY(0deg);
+
+    .page.front {
+      z-index: 0;
+    }
+  }
 
   .page {
     @include position(absolute, right, top, 0, 0);
-    background-color: $bg_page;
+    background: $bg_page;
     height: 100%;
     width: 95%;
-    // border-radius: 10px 0 0 10px;
+    padding: 30px;
+    box-shadow: -1px 0 5px -2px #c4c4c4b3;
+
+    .page_title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.7rem;
+      font-family: verdana;
+    }
+
+    .item {
+      padding: 0 20px 30px 25px;
+      border-left: 2px solid $clr_acc;
+      position: relative;
+
+      &:first-of-type {
+        padding-top: 0;
+      }
+
+      &:last-of-type {
+        padding-bottom: 0;
+
+        &::after {
+          content: '';
+          @include position(absolute, left, bottom, -6px, 0);
+          background-color: $clr_acc;
+          width: 10px;
+          height: 2px;
+        }
+      }
+
+      &::before {
+        content: '';
+        @include position(absolute, left, top, -10px, -1px);
+        width: 20px;
+        aspect-ratio: 1/1;
+        background-color: $clr_acc;
+        border-radius: 50%;
+      }
+
+      .date {
+        font-size: 0.95rem;
+        color: $clr_acc;
+
+        .icon {
+          margin-right: 10px;
+        }
+      }
+
+      .title {
+        padding-block: 5px;
+      }
+
+      .info {
+        line-height: 1.5;
+        letter-spacing: 0.1rem;
+      }
+    }
+
+    footer {
+      @include position(absolute, left, bottom, 0, 0);
+      width: 100%;
+      height: fit-content;
+      padding-block: 10px;
+      @include flex(center, center);
+
+      .nav_btn {
+        @include uniTranslate(Y, -50%);
+        font-size: 2rem;
+        padding: 5px;
+        transition: $trans_mid;
+
+        &.next {
+          @include position(absolute, right, top, 25px, 50%);
+        }
+
+        &.prev {
+          @include position(absolute, left, top, 25px, 50%);
+        }
+
+        &:hover {
+          color: $clr_acc;
+        }
+      }
+    }
 
     &.front {
       transform: rotateY(180deg) translateZ(1px);
+      z-index: 1;
+      transition: z-index linear 50ms calc($trans_slow/2);
+    }
+
+    &.back {
+      transform: rotateY(0deg) translateZ(1px);
     }
   }
 }

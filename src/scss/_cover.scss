@@ -12,6 +12,8 @@
     height: 100%;
     max-height: 100%;
     @include position(absolute, right, top, 0, 0);
+    z-index: 100;
+    transition: z-index 10ms 2.5s;
 
     &:hover,
     &.open {
@@ -29,6 +31,7 @@
     }
 
     &.open {
+      z-index: 0;
       .right {
         &::before,
         &::after {
@@ -38,8 +41,9 @@
     }
 
     &.open + #content_wrapper {
+      opacity: 1;
       visibility: visible;
-      transition: all ease 0.5s 500ms;
+      transform: translateX(0);
     }
 
     .cover {
@@ -48,7 +52,6 @@
       background: $bg_cover;
       @include position(absolute, right, top, 0, 0);
       border-radius: $brd_rad_cover;
-      transition: ease 2s;
       box-shadow: 0 0 5px #0000003f;
       transform: rotateX(50deg) rotateY(10deg);
       transition: ease 3s;
@@ -68,17 +71,16 @@
           font-size: 1.5rem;
           padding: 10px 20px;
           border-radius: 10px;
-          box-shadow: 5px 5px 10px #03606aec, -5px -5px 10px #28dcc425;
+          box-shadow: 5px 5px 10px #006086, -5px -5px 10px #22baf7;
           color: $bg_cover2;
           transition: opacity ease 3s 500ms;
-          background: linear-gradient(-45deg, #03606aec, #28dcc459);
+          background: linear-gradient(-45deg, #00608691, #22bbf77d);
           margin-top: 150px;
           opacity: 0;
 
           &:active {
-            box-shadow: inset 5px 5px 10px #03606aec,
-              inset -5px -5px 10px #28dcc425;
-            background: linear-gradient(45deg, #03606aec, #28dcc459);
+            box-shadow: inset 5px 5px 10px #006086, inset -5px -5px 10px #22baf7;
+            background: linear-gradient(45deg, #00608691, #22bbf77d);
           }
         }
       }
