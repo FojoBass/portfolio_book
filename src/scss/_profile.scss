@@ -1,11 +1,12 @@
 @use 'config' as *;
 
-.profile {
+.profile .page_wrapper {
   @include flex(flex-start, center, column);
 
   .img_wrapper {
     width: 200px;
     height: 200px;
+    min-height: 200px;
     border-radius: 50%;
     overflow: hidden;
     padding: 5px;
@@ -37,7 +38,7 @@
   }
 
   .btns_wrapper {
-    margin-top: 40px;
+    margin-top: 30px;
     @include flex(center, center);
     gap: 20px;
   }

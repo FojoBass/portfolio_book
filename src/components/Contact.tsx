@@ -10,7 +10,8 @@ const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [msg, setMsg] = useState('');
-  const { leafRefs, leftCoverRef, wrapRef, contentRef } = useGlobalContext();
+  const { leafRefs, leftCoverRef, wrapRef, contentRef, isWebkit } =
+    useGlobalContext();
 
   const handleClick = () => {
     if (leafRefs) {
@@ -83,52 +84,62 @@ const Contact = () => {
 
   return (
     <LeafletLayout id='4' isTurn={isTurn}>
-      <div className='page front'>
-        <h1 className='page_title'>Contact Me</h1>
+      <div
+        suppressHydrationWarning
+        className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
+      >
+        <div className='page_wrapper'>
+          <h1 className='page_title'>Contact Me</h1>
 
-        <form action='' onSubmit={(e) => e.preventDefault()}>
-          <input
-            type='text'
-            placeholder='Full Name'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Email Address'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <textarea
-            name=''
-            id=''
-            cols={30}
-            rows={10}
-            placeholder='Your Message'
-            value={msg}
-            onChange={(e) => setMsg(e.target.value)}
-          ></textarea>
+          <form action='' onSubmit={(e) => e.preventDefault()}>
+            <input
+              type='text'
+              placeholder='Full Name'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Email Address'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <textarea
+              name=''
+              id=''
+              cols={30}
+              rows={10}
+              placeholder='Your Message'
+              value={msg}
+              onChange={(e) => setMsg(e.target.value)}
+            ></textarea>
 
-          <button className='cta_btn'>Send Message</button>
-        </form>
+            <button className='cta_btn'>Send Message</button>
+          </form>
+        </div>
 
         <PageFooter id='4' isEven={false} pageCount={7} />
       </div>
 
-      <div className='page back end'>
-        <p className='text'>
-          The End
-          <button className='close_btn btn' onClick={handleClose}>
-            Close
-          </button>
-        </p>
+      <div
+        suppressHydrationWarning
+        className={`page back end ${isWebkit ? 'webkit' : 'not_webkit'}`}
+      >
+        <div className='page_wrapper'>
+          <p className='text'>
+            The End
+            <button className='close_btn btn' onClick={handleClose}>
+              Close
+            </button>
+          </p>
 
-        <button className='to_about' onClick={handleClick}>
-          <span className='icon'>
-            <FaUser />
-          </span>
-          <p>About</p>
-        </button>
+          <button className='to_about' onClick={handleClick}>
+            <span className='icon'>
+              <FaUser />
+            </span>
+            <p>About</p>
+          </button>
+        </div>
 
         <PageFooter id='4' isEven={true} pageCount={8} />
       </div>

@@ -37,8 +37,28 @@
     background: $bg_page;
     height: 100%;
     width: 95%;
-    padding: 30px;
     box-shadow: -1px 0 5px -2px #c4c4c4b3;
+    // background: green;
+
+    .page_wrapper {
+      overflow-y: auto;
+      height: 100%;
+      width: 100%;
+      padding: 30px;
+    }
+
+    &.not_webkit .page_wrapper {
+      scrollbar-width: thin;
+      scrollbar-color: #b4b4b4 transparent;
+    }
+
+    &.webkit .page_wrapper::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &.webkit .page_wrapper::-webkit-scrollbar-thumb {
+      background-color: #b4b4b4;
+    }
 
     .page_title {
       text-align: center;
@@ -97,11 +117,16 @@
     }
 
     footer {
-      @include position(absolute, left, bottom, 0, 0);
       width: 100%;
       height: fit-content;
-      padding-block: 10px;
       @include flex(center, center);
+      background: $bg_page;
+      padding-block: 5px;
+      overflow: hidden;
+      margin-block-start: auto;
+      position: fixed;
+      bottom: 0;
+      left: 0;
 
       .nav_btn {
         @include uniTranslate(Y, -50%);
@@ -110,11 +135,11 @@
         transition: $trans_mid;
 
         &.next {
-          @include position(absolute, right, top, 25px, 50%);
+          @include position(absolute, right, top, 0px, 50%);
         }
 
         &.prev {
-          @include position(absolute, left, top, 25px, 50%);
+          @include position(absolute, left, top, 0px, 50%);
         }
 
         &:hover {

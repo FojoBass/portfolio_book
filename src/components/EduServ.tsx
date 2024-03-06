@@ -5,39 +5,51 @@ import ExpEduContent from './ExpEduContent';
 import { FaRegCalendarDays } from 'react-icons/fa6';
 import { eduList, servList } from '@/data';
 import { IconType } from 'react-icons';
+import { useGlobalContext } from '@/context';
 
 const EduServ = () => {
   const [isTurn, setIsTurn] = useState(false);
+  const { isWebkit } = useGlobalContext();
 
   return (
     <LeafletLayout id='2' isTurn={isTurn}>
-      <div className='page front'>
-        <h1 className='page_title'>Education</h1>
+      <div
+        suppressHydrationWarning
+        className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
+      >
+        <div className='page_wrapper'>
+          <h1 className='page_title'>Education</h1>
 
-        {eduList.map((list, index) => (
-          <ExpEduContent
-            key={list.year + index}
-            info={list.info}
-            title={list.title}
-            year={list.year}
-          />
-        ))}
+          {eduList.map((list, index) => (
+            <ExpEduContent
+              key={list.year + index}
+              info={list.info}
+              title={list.title}
+              year={list.year}
+            />
+          ))}
+        </div>
 
         <PageFooter id='2' isEven={false} pageCount={3} />
       </div>
 
-      <div className='page back'>
-        <h1 className='page_title'>Services</h1>
+      <div
+        suppressHydrationWarning
+        className={`page back ${isWebkit ? 'webkit' : 'not_webkit'}`}
+      >
+        <div className='page_wrapper'>
+          <h1 className='page_title'>Services</h1>
 
-        <div className='services_wrapper'>
-          {servList.map(({ Icon, title, info }, index) => (
-            <ServContent
-              key={title + index}
-              Icon={Icon}
-              info={info}
-              title={title}
-            />
-          ))}
+          <div className='services_wrapper'>
+            {servList.map(({ Icon, title, info }, index) => (
+              <ServContent
+                key={title + index}
+                Icon={Icon}
+                info={info}
+                title={title}
+              />
+            ))}
+          </div>
         </div>
 
         <PageFooter id='2' isEven={true} pageCount={4} />

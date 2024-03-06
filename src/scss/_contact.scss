@@ -27,8 +27,9 @@ form {
   }
 }
 
-.end {
+.end .page_wrapper {
   display: flex;
+  flex-direction: column;
 
   .text {
     margin: auto;
@@ -49,14 +50,18 @@ form {
   }
 
   .to_about {
-    @include position(absolute, right, bottom, 20px, 10px);
+    // @include position(absolute, right, bottom, 20px, 0px);
+    position: relative;
     color: $clr_acc;
     font-size: 1.2rem;
     border: 1px solid $clr_acc;
     padding: 5px;
     border-radius: 5px;
-    z-index: 1;
+    width: fit-content;
+    margin-left: auto;
+
     transition: ease $trans_mid;
+    z-index: 10;
 
     &:hover {
       background-color: $clr_acc;

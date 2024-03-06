@@ -2,7 +2,7 @@
 
 .skills_wrapper {
   @include flex(flex-start, flex-start, column);
-  gap: 30px;
+  gap: 20px;
 
   .skill_wrapper {
     width: 100%;
@@ -36,10 +36,10 @@
         .content {
           width: 100%;
           border: 2px solid $clr_acc;
-          padding: 10px;
+          padding: 5px;
           border-radius: 5px;
           @include flex(center, center, column);
-          font-size: 1.2rem;
+          font-size: 1.1rem;
           font-weight: 600;
           transition: ease $trans_mid;
           transform-origin: bottom;

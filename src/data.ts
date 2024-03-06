@@ -25,17 +25,17 @@ export const expList = [
   {
     year: '2020-2021',
     title: 'Web Developer - Company',
-    info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non qui obcaecati earum a voluptatum odit consectetur harum velit architecto obcaecati earum a voluptatum odit consectetur harum',
+    info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non qui obcaecati earum a voluptatum odit consectetur harum velit architecto obcaecati ',
   },
   {
     year: '2021-2022',
     title: 'Web Developer - Company',
-    info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non qui obcaecati earum a voluptatum odit consectetur harum velit architecto obcaecati earum a voluptatum odit consectetur harum',
+    info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non qui obcaecati earum a voluptatum odit consectetur harum velit architecto obcaecati ',
   },
   {
     year: '2022-Present',
     title: 'Web Developer - Company',
-    info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non qui obcaecati earum a voluptatum odit consectetur harum velit architecto obcaecati earum a voluptatum odit consectetur harum',
+    info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non qui obcaecati earum a voluptatum odit consectetur harum velit architecto obcaecati ',
   },
 ];
 
@@ -43,17 +43,17 @@ export const eduList = [
   {
     year: '2014-2019',
     title: 'Bachelor Degree - Lorem',
-    info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non qui obcaecati earum a voluptatum odit consectetur harum velit architecto obcaecati earum a voluptatum odit consectetur harum!',
+    info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non qui obcaecati earum a voluptatum odit consectetur harum velit architecto obcaecati ',
   },
   {
     year: '2021-2022',
     title: 'Master Degree - Lorem',
-    info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non qui obcaecati earum a voluptatum odit consectetur harum velit architecto obcaecati earum a voluptatum odit consectetur harum!',
+    info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non qui obcaecati earum a voluptatum odit consectetur harum velit architecto obcaecati ',
   },
   {
     year: '2022-Present',
     title: 'Master Degree - Lorem',
-    info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non qui obcaecati earum a voluptatum odit consectetur harum velit architecto obcaecati earum a voluptatum odit consectetur harum!',
+    info: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non qui obcaecati earum a voluptatum odit consectetur harum velit architecto obcaecati ',
   },
 ];
 

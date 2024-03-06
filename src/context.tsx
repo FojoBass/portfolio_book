@@ -6,6 +6,7 @@ import React, {
   useContext,
   useEffect,
   useRef,
+  useState,
 } from 'react';
 
 interface AppContextInt {
@@ -13,6 +14,7 @@ interface AppContextInt {
   leftCoverRef?: React.MutableRefObject<null | HTMLDivElement>;
   wrapRef?: React.MutableRefObject<null | HTMLDivElement>;
   contentRef?: React.MutableRefObject<null | HTMLDivElement>;
+  isWebkit?: React.SetStateAction<boolean>;
 }
 
 const AppContext = createContext<AppContextInt>({});
@@ -24,12 +26,14 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   const leftCoverRef = useRef<null | HTMLDivElement>(null);
   const wrapRef = useRef<null | HTMLDivElement>(null);
   const contentRef = useRef<null | HTMLDivElement>(null);
+  const [isWebkit, setIsWebkit] = useState(false);
 
   const sharedProps: AppContextInt = {
     leafRefs,
     leftCoverRef,
     wrapRef,
     contentRef,
+    isWebkit,
   };
 
   useEffect(() => {
@@ -37,6 +41,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
       const id = Number(el.id);
       el.style.zIndex = `${(leafRefs.current.length - id) * 10}`;
     });
+
+    setIsWebkit(window.navigator.userAgent.toLowerCase().includes('webkit'));
   }, []);
 
   return (
