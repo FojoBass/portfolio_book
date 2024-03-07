@@ -42,7 +42,9 @@ const Home = () => {
 
   useEffect(() => {
     if (document.readyState === 'complete') {
-      setLoading && setLoading(false);
+      setTimeout(() => {
+        setLoading && setLoading(false);
+      }, 3000);
     }
   }, []);
 

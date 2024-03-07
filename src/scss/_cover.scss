@@ -18,6 +18,12 @@
     z-index: 100;
     transition: z-index 10ms 2.5s;
 
+    &:hover {
+      .cover.left .open_btn {
+        pointer-events: all;
+      }
+    }
+
     &:hover,
     &.open {
       .cover {
@@ -80,6 +86,7 @@
           background: linear-gradient(-45deg, #00608691, #22bbf77d);
           margin-top: 150px;
           opacity: 0;
+          pointer-events: none;
 
           &:active {
             box-shadow: inset 5px 5px 10px #006086, inset -5px -5px 10px #22baf7;
