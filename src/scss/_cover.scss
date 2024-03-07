@@ -6,6 +6,9 @@
   max-height: 750px;
   margin-block: auto;
   position: relative;
+  scale: 0;
+  transform: translateY(-100%);
+  animation: bookAnim 3s ease 1 forwards;
 
   .cover_wrapper {
     width: 50%;
@@ -140,5 +143,16 @@
         width: 95%;
       }
     }
+  }
+}
+
+@keyframes bookAnim {
+  from {
+    scale: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    scale: 1;
+    transform: translateY(0%);
   }
 }

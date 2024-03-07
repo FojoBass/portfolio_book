@@ -50,13 +50,12 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   useEffect(() => {
-    console.log('in effect: ', leafRefs.current.length);
-
-    leafRefs.current.forEach((el) => {
+    const modLeafs = [...new Set(leafRefs.current)];
+    modLeafs.forEach((el) => {
       const id = Number(el.id);
-      el.style.zIndex = `${(leafRefs.current.length - id) * 10}`;
+      el.style.zIndex = `${(modLeafs.length - id) * 10}`;
     });
-  }, [loading]);
+  }, [loading, isMobile]);
 
   useEffect(() => {
     window.onresize = () => {
