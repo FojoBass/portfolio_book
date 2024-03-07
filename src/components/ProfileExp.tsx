@@ -9,11 +9,11 @@ import { useGlobalContext } from '@/context';
 import { delay } from '@/helpers';
 
 const ProfileExp = () => {
-  const { isWebkit, isMobile, leafRefs } = useGlobalContext();
+  const { isWebkit, isMidScreen, leafRefs } = useGlobalContext();
 
   const handleClick = () => {
     if (leafRefs) {
-      if (!isMobile) {
+      if (!isMidScreen) {
         const recur = (index: number) => {
           if (index >= leafRefs.current.length - 1) return;
 
@@ -41,7 +41,7 @@ const ProfileExp = () => {
     }
   };
 
-  return !isMobile ? (
+  return !isMidScreen ? (
     <LeafletLayout id='1'>
       <div
         suppressHydrationWarning

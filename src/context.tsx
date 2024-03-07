@@ -15,9 +15,10 @@ interface AppContextInt {
   wrapRef?: React.MutableRefObject<null | HTMLDivElement>;
   contentRef?: React.MutableRefObject<null | HTMLDivElement>;
   isWebkit?: boolean;
-  isMobile?: boolean;
+  isMidScreen?: boolean;
   setLoading?: React.Dispatch<React.SetStateAction<boolean>>;
   loading?: boolean;
+  isMobile?: boolean;
 }
 
 const AppContext = createContext<AppContextInt>({});
@@ -30,8 +31,18 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   const wrapRef = useRef<null | HTMLDivElement>(null);
   const contentRef = useRef<null | HTMLDivElement>(null);
   const [isWebkit, setIsWebkit] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMidScreen, setIsMidScreen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const toMatch = [
+    /Android/i,
+    /webOS/i,
+    /iPhone/i,
+    /iPad/i,
+    /iPod/i,
+    /BlackBerry/i,
+    /Windows Phone/i,
+  ];
+  const [isMobile, setIsMobile] = useState(false);
 
   const sharedProps: AppContextInt = {
     leafRefs,
@@ -39,14 +50,19 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     wrapRef,
     contentRef,
     isWebkit,
-    isMobile,
+    isMidScreen,
     loading,
     setLoading,
+    isMobile,
   };
 
   useEffect(() => {
     setIsWebkit(window.navigator.userAgent.toLowerCase().includes('webkit'));
-    setIsMobile(window.innerWidth < 800);
+    setIsMidScreen(window.innerWidth < 800);
+
+    setIsMobile(
+      !!toMatch.find((toMatchItem) => navigator.userAgent.match(toMatchItem))
+    );
   }, []);
 
   useEffect(() => {
@@ -55,18 +71,18 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
       const id = Number(el.id);
       el.style.zIndex = `${(modLeafs.length - id) * 10}`;
     });
-  }, [loading, isMobile]);
+  }, [loading, isMidScreen]);
 
   useEffect(() => {
     window.onresize = () => {
-      if (window.innerWidth < 800 && !isMobile) setIsMobile(true);
-      if (window.innerWidth >= 800 && isMobile) setIsMobile(false);
+      if (window.innerWidth < 800 && !isMidScreen) setIsMidScreen(true);
+      if (window.innerWidth >= 800 && isMidScreen) setIsMidScreen(false);
     };
 
     return () => {
       window.onresize = null;
     };
-  }, [isMobile]);
+  }, [isMidScreen]);
 
   return (
     <AppContext.Provider value={sharedProps}>{children}</AppContext.Provider>

@@ -9,7 +9,7 @@ const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [msg, setMsg] = useState('');
-  const { leafRefs, leftCoverRef, wrapRef, contentRef, isWebkit, isMobile } =
+  const { leafRefs, leftCoverRef, wrapRef, contentRef, isWebkit, isMidScreen } =
     useGlobalContext();
 
   const handleClick = () => {
@@ -81,7 +81,7 @@ const Contact = () => {
     }
   };
 
-  return !isMobile ? (
+  return !isMidScreen ? (
     <LeafletLayout id='4'>
       <div
         suppressHydrationWarning

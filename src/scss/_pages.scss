@@ -131,7 +131,7 @@
         .nav_btn {
           @include uniTranslate(Y, -50%);
           font-size: 2rem;
-          padding: 5px;
+          padding: 8px;
           transition: $trans_mid;
 
           &.next {
@@ -160,7 +160,7 @@
     }
   }
 
-  &.mobile {
+  &.mid_screen {
     .leaf {
       @include position(absolute, left, top, 0, 50%);
       transform: translateY(-50%) translateX(-75%) translateZ(1px)

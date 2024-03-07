@@ -17,7 +17,7 @@ const PageFooter: React.FC<PageFooterInt> = ({
   isEven,
   isLastPage,
 }) => {
-  const { leafRefs, isMobile } = useGlobalContext();
+  const { leafRefs, isMidScreen } = useGlobalContext();
 
   const handleNav = () => {
     if (leafRefs?.current) {
@@ -37,7 +37,7 @@ const PageFooter: React.FC<PageFooterInt> = ({
     <footer>
       <span className='page_num'>{pageCount}</span>
 
-      {!isMobile ? (
+      {!isMidScreen ? (
         <button
           className={`nav_btn ${isEven ? 'prev' : 'next'}`}
           data-id={id}

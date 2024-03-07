@@ -132,7 +132,7 @@
     }
   }
 
-  &.mobile {
+  &.mid_screen {
     .cover_wrapper {
       width: 80%;
       .left.turn {
@@ -143,6 +143,10 @@
         width: 95%;
       }
     }
+  }
+
+  &.mobile {
+    top: -20px;
   }
 }
 

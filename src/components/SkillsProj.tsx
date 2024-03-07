@@ -8,9 +8,9 @@ import { RiExternalLinkLine } from 'react-icons/ri';
 import { useGlobalContext } from '@/context';
 
 const SkillsProj = () => {
-  const { isWebkit, isMobile } = useGlobalContext();
+  const { isWebkit, isMidScreen } = useGlobalContext();
 
-  return !isMobile ? (
+  return !isMidScreen ? (
     <LeafletLayout id='3'>
       <div
         suppressHydrationWarning

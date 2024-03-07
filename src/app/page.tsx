@@ -13,9 +13,10 @@ const Home = () => {
     leftCoverRef,
     wrapRef,
     contentRef,
-    isMobile,
+    isMidScreen,
     loading,
     setLoading,
+    isMobile,
   } = useGlobalContext();
 
   const hanldeBookOpen = () => {
@@ -82,7 +83,12 @@ const Home = () => {
       <div className='side back'></div>
     </div>
   ) : (
-    <section id='book' className={`${isMobile ? 'mobile' : ''}`}>
+    <section
+      id='book'
+      className={`${isMidScreen ? 'mid_screen' : ''} ${
+        isMobile ? 'mobile' : ''
+      }`}
+    >
       <div className='cover_wrapper' ref={wrapRef}>
         <div className='cover left' ref={leftCoverRef}>
           <h2>John's Portfolio</h2>

@@ -7,9 +7,9 @@ import { IconType } from 'react-icons';
 import { useGlobalContext } from '@/context';
 
 const EduServ = () => {
-  const { isWebkit, isMobile } = useGlobalContext();
+  const { isWebkit, isMidScreen } = useGlobalContext();
 
-  return !isMobile ? (
+  return !isMidScreen ? (
     <LeafletLayout id='2'>
       <div
         suppressHydrationWarning
