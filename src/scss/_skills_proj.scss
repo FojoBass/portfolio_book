@@ -136,6 +136,7 @@
   .btns_wrapper {
     @include flex(space-evenly, center);
     margin-top: 20px;
+    gap: 10px;
 
     @include media(max, 400px) {
       flex-direction: column;
