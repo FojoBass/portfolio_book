@@ -6,11 +6,10 @@ import { useGlobalContext } from '@/context';
 import { delay } from '@/helpers';
 
 const Contact = () => {
-  const [isTurn, setIsTurn] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [msg, setMsg] = useState('');
-  const { leafRefs, leftCoverRef, wrapRef, contentRef, isWebkit } =
+  const { leafRefs, leftCoverRef, wrapRef, contentRef, isWebkit, isMobile } =
     useGlobalContext();
 
   const handleClick = () => {
@@ -82,8 +81,8 @@ const Contact = () => {
     }
   };
 
-  return (
-    <LeafletLayout id='4' isTurn={isTurn}>
+  return !isMobile ? (
+    <LeafletLayout id='4'>
       <div
         suppressHydrationWarning
         className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
@@ -144,6 +143,76 @@ const Contact = () => {
         <PageFooter id='4' isEven={true} pageCount={8} />
       </div>
     </LeafletLayout>
+  ) : (
+    <>
+      <LeafletLayout id='7'>
+        <div
+          suppressHydrationWarning
+          className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
+        >
+          <div className='page_wrapper'>
+            <h1 className='page_title'>Contact Me</h1>
+
+            <form action='' onSubmit={(e) => e.preventDefault()}>
+              <input
+                type='text'
+                placeholder='Full Name'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <input
+                type='text'
+                placeholder='Email Address'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <textarea
+                name=''
+                id=''
+                cols={30}
+                rows={10}
+                placeholder='Your Message'
+                value={msg}
+                onChange={(e) => setMsg(e.target.value)}
+              ></textarea>
+
+              <button className='cta_btn'>Send Message</button>
+            </form>
+          </div>
+
+          <PageFooter id='7' isEven={false} pageCount={13} />
+        </div>
+
+        <div className='page back'></div>
+      </LeafletLayout>
+
+      <LeafletLayout id='8'>
+        <div
+          suppressHydrationWarning
+          className={`page front end ${isWebkit ? 'webkit' : 'not_webkit'}`}
+        >
+          <div className='page_wrapper'>
+            <p className='text'>
+              The End
+              <button className='close_btn btn' onClick={handleClose}>
+                Close
+              </button>
+            </p>
+
+            <button className='to_about' onClick={handleClick}>
+              <span className='icon'>
+                <FaUser />
+              </span>
+              <p>About</p>
+            </button>
+          </div>
+
+          <PageFooter id='8' isEven={false} pageCount={15} isLastPage={true} />
+        </div>
+
+        <div className='pages back'></div>
+      </LeafletLayout>
+    </>
   );
 };
 

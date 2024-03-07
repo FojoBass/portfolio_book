@@ -1,18 +1,16 @@
 import LeafletLayout from '@/LeafletLayout';
-import React, { useState } from 'react';
+import React from 'react';
 import PageFooter from './PageFooter';
 import ExpEduContent from './ExpEduContent';
-import { FaRegCalendarDays } from 'react-icons/fa6';
 import { eduList, servList } from '@/data';
 import { IconType } from 'react-icons';
 import { useGlobalContext } from '@/context';
 
 const EduServ = () => {
-  const [isTurn, setIsTurn] = useState(false);
-  const { isWebkit } = useGlobalContext();
+  const { isWebkit, isMobile } = useGlobalContext();
 
-  return (
-    <LeafletLayout id='2' isTurn={isTurn}>
+  return !isMobile ? (
+    <LeafletLayout id='2'>
       <div
         suppressHydrationWarning
         className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
@@ -55,6 +53,58 @@ const EduServ = () => {
         <PageFooter id='2' isEven={true} pageCount={4} />
       </div>
     </LeafletLayout>
+  ) : (
+    <>
+      <LeafletLayout id='3'>
+        <div
+          suppressHydrationWarning
+          className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
+        >
+          <div className='page_wrapper'>
+            <h1 className='page_title'>Education</h1>
+
+            {eduList.map((list, index) => (
+              <ExpEduContent
+                key={list.year + index}
+                info={list.info}
+                title={list.title}
+                year={list.year}
+              />
+            ))}
+          </div>
+
+          <PageFooter id='3' isEven={false} pageCount={5} />
+        </div>
+
+        <div className='page back'></div>
+      </LeafletLayout>
+
+      <LeafletLayout id='4'>
+        <div
+          suppressHydrationWarning
+          className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
+        >
+          <div className='page_wrapper'>
+            <h1 className='page_title'>Services</h1>
+
+            <div className='services_wrapper'>
+              {servList.map(({ Icon, title, info }, index) => (
+                <ServContent
+                  key={title + index}
+                  Icon={Icon}
+                  info={info}
+                  title={title}
+                />
+              ))}
+            </div>
+          </div>
+
+          <PageFooter id='4' isEven={false} pageCount={7} />
+        </div>
+
+        <div className='page back'></div>
+      </LeafletLayout>
+    </>
   );
 };
 

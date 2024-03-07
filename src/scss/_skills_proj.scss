@@ -16,6 +16,10 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
 
+      @include media(max, 400px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
       .skill {
         position: relative;
 
@@ -73,6 +77,14 @@
     border-radius: 10px;
     overflow: hidden;
 
+    @include media(max, $bp_mid) {
+      height: 200px;
+    }
+
+    @include media(max, 400px) {
+      height: 150px;
+    }
+
     &:hover img {
       transform: scale(1.1);
     }
@@ -91,6 +103,11 @@
   .proj_title_wrapper {
     @include flex(space-between, center);
     margin-block: 20px;
+
+    @include media(max, 400px) {
+      flex-direction: column;
+      gap: 5px;
+    }
 
     .title {
       font-family: verdana;
@@ -119,5 +136,10 @@
   .btns_wrapper {
     @include flex(space-evenly, center);
     margin-top: 20px;
+
+    @include media(max, 400px) {
+      flex-direction: column;
+      gap: 10px;
+    }
   }
 }

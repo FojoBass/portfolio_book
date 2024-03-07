@@ -9,6 +9,8 @@ $brd_rad_cover: 0 10px 10px 0;
 $clr_acc: #00abf0;
 $clr_txt1: #333333;
 $clr_txt2: #fff;
+$bp_mid: 850px;
+$bp_sml: 500px;
 
 @mixin flex($justify, $align, $dir: row) {
   justify-content: $justify;
@@ -33,4 +35,10 @@ $clr_txt2: #fff;
 
 @mixin uniRotate($axis, $deg) {
   transform: rotate#{$axis }($deg);
+}
+
+@mixin media($qty, $val) {
+  @media screen and (#{$qty}-width: $val) {
+    @content;
+  }
 }

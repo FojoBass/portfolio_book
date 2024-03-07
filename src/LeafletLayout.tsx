@@ -4,19 +4,14 @@ import { useGlobalContext } from './context';
 interface LeafletLayoutInt {
   id: string;
   children: React.ReactNode;
-  isTurn: boolean;
 }
 
-const LeafletLayout: React.FC<LeafletLayoutInt> = ({
-  id,
-  children,
-  isTurn,
-}) => {
+const LeafletLayout: React.FC<LeafletLayoutInt> = ({ id, children }) => {
   const { leafRefs } = useGlobalContext();
 
   return (
     <div
-      className={`leaf ${isTurn ? 'turn' : ''}`}
+      className='leaf'
       id={id}
       ref={(el) => el && leafRefs?.current.push(el)}
     >

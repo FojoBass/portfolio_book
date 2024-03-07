@@ -7,6 +7,15 @@
   transform-style: preserve-3d;
 }
 
+:root {
+  @include media(max, $bp_mid) {
+    font-size: 14px;
+  }
+  @include media(max, $bp_sml) {
+    font-size: 12px;
+  }
+}
+
 body {
   background-color: $bg_drk;
   display: flex;
@@ -14,7 +23,8 @@ body {
   height: 100vh;
   perspective: 2500px;
   color: $clr_txt1;
-  overflow-y: hidden;
+  overflow: hidden;
+  padding-inline: 10px;
 }
 
 button {

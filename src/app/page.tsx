@@ -5,10 +5,18 @@ import ProfileExp from '@/components/ProfileExp';
 import SkillsProj from '@/components/SkillsProj';
 import { useGlobalContext } from '@/context';
 import { delay } from '@/helpers';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Home = () => {
-  const { leafRefs, leftCoverRef, wrapRef, contentRef } = useGlobalContext();
+  const {
+    leafRefs,
+    leftCoverRef,
+    wrapRef,
+    contentRef,
+    isMobile,
+    loading,
+    setLoading,
+  } = useGlobalContext();
 
   const hanldeBookOpen = () => {
     if (wrapRef?.current && leftCoverRef?.current && contentRef?.current) {
@@ -31,12 +39,14 @@ const Home = () => {
     }
   };
 
-  // todo remove content-wrapper's transition after open
-  // todo when closing remove vissibility and then add transition
-  // todo add zIndex transition to cover wrapper
+  useEffect(() => {
+    if (document.readyState === 'complete') {
+      setLoading && setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    if (contentRef?.current && leafRefs) {
+    if (!loading && contentRef?.current && leafRefs) {
       const el = contentRef.current;
 
       const mutObserver = new MutationObserver((mutationList, observer) => {
@@ -60,10 +70,12 @@ const Home = () => {
 
       mutObserver.observe(el, { attributes: true, subtree: true });
     }
-  }, []);
+  }, [loading]);
 
-  return (
-    <section id='book'>
+  return loading ? (
+    'Loading'
+  ) : (
+    <section id='book' className={`${isMobile ? 'mobile' : ''}`}>
       <div className='cover_wrapper' ref={wrapRef}>
         <div className='cover left' ref={leftCoverRef}>
           <h2>John's Portfolio</h2>

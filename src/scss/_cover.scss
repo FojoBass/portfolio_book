@@ -128,4 +128,17 @@
       }
     }
   }
+
+  &.mobile {
+    .cover_wrapper {
+      width: 80%;
+      .left.turn {
+        @include uniRotate(Y, -260deg);
+      }
+
+      @include media(max, 500px) {
+        width: 95%;
+      }
+    }
+  }
 }
