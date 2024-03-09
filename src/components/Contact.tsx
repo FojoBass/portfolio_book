@@ -9,8 +9,15 @@ const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [msg, setMsg] = useState('');
-  const { leafRefs, leftCoverRef, wrapRef, contentRef, isWebkit, isMidScreen } =
-    useGlobalContext();
+  const {
+    leafRefs,
+    leftCoverRef,
+    wrapRef,
+    contentRef,
+    isWebkit,
+    isMidScreen,
+    setDisablePointer,
+  } = useGlobalContext();
 
   const handleClick = () => {
     if (leafRefs) {
@@ -45,14 +52,13 @@ const Contact = () => {
             leftCoverEl.classList.remove('turn');
             leftCoverEl.style.transform =
               'rotateX(0deg) rotateY(0deg) translateZ(2px)';
+            setDisablePointer && setDisablePointer(true);
 
             delay(() => {
               wrapEl.style.zIndex = '100';
             }, 200 * leafRefs.current.length);
 
             leftCoverEl.ontransitionend = () => {
-              contentEl.style.opacity = '0';
-              contentEl.style.visibility = 'hidden';
               leftCoverEl.removeAttribute('style');
               contentEl.style.transition =
                 'opacity ease 0.1s 300ms, transform ease 10ms 0.8s';
@@ -60,9 +66,16 @@ const Contact = () => {
 
               delay(() => {
                 wrapEl.classList.remove('open');
-                contentEl.removeAttribute('style');
                 wrapEl.removeAttribute('style');
               }, 500);
+
+              delay(() => {
+                contentEl.removeAttribute('style');
+              }, 1500);
+
+              delay(() => {
+                setDisablePointer && setDisablePointer(false);
+              }, 3000);
 
               leftCoverEl.ontransitionend = null;
             };
@@ -70,9 +83,23 @@ const Contact = () => {
           return;
         }
 
+        if (index === 0) {
+          if (contentRef.current) {
+            const contentEl = contentRef.current;
+            delay(() => {
+              contentEl.style.transform = 'translateX(4px)';
+            }, 200);
+
+            delay(() => {
+              contentEl.style.display = 'none';
+            }, 2500);
+          }
+        }
+
         const el = leafRefs.current[index];
         delay(() => {
           el.classList.remove('turn');
+
           recur(index - 1);
         }, 200);
       };

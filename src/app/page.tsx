@@ -17,6 +17,7 @@ const Home = () => {
     loading,
     setLoading,
     isMobile,
+    disablePointer,
   } = useGlobalContext();
 
   const hanldeBookOpen = () => {
@@ -33,8 +34,11 @@ const Home = () => {
 
       contentRef.current.ontransitionend = () => {
         if (contentRef.current) {
-          contentRef.current.style.transition = 'none';
-          contentRef.current.ontransitionend = null;
+          const contentEl = contentRef.current;
+          delay(() => {
+            contentEl.style.transition = 'none';
+            contentEl.ontransitionend = null;
+          }, 500);
         }
       };
     }
@@ -89,7 +93,7 @@ const Home = () => {
       id='book'
       className={`${isMidScreen ? 'mid_screen' : ''} ${
         isMobile ? 'mobile' : ''
-      }`}
+      } ${disablePointer ? 'disable' : ''}`}
     >
       <div className='cover_wrapper' ref={wrapRef}>
         <div className='cover left' ref={leftCoverRef}>

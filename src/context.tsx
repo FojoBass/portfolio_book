@@ -19,6 +19,8 @@ interface AppContextInt {
   setLoading?: React.Dispatch<React.SetStateAction<boolean>>;
   loading?: boolean;
   isMobile?: boolean;
+  disablePointer?: boolean;
+  setDisablePointer?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AppContext = createContext<AppContextInt>({});
@@ -43,6 +45,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     /Windows Phone/i,
   ];
   const [isMobile, setIsMobile] = useState(false);
+  const [disablePointer, setDisablePointer] = useState(false);
 
   const sharedProps: AppContextInt = {
     leafRefs,
@@ -54,6 +57,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     loading,
     setLoading,
     isMobile,
+    disablePointer,
+    setDisablePointer,
   };
 
   useEffect(() => {
