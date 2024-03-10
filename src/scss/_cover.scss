@@ -8,7 +8,6 @@
   position: relative;
   scale: 0;
   animation: bookAnim 3s ease 1 forwards;
-  // transform: rotateX(50deg) translateY(-100%) rotateY(10deg);
   transform: rotateX(50deg) rotateY(10deg);
   transition: transform ease 3s;
 
@@ -50,7 +49,6 @@
     }
 
     &.open {
-      // z-index: 0;
       .right {
         &::before,
         &::after {
@@ -82,6 +80,10 @@
           color: #fff;
           font-size: 2.5rem;
           font-family: cursive;
+        }
+
+        p {
+          color: #fff;
         }
 
         .open_btn {

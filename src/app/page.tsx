@@ -32,16 +32,6 @@ const Home = () => {
           wrapRef.current.ontransitionend = null;
         }
       };
-
-      // contentRef.current.ontransitionend = () => {
-      //   if (contentRef.current) {
-      //     const contentEl = contentRef.current;
-      //     delay(() => {
-      //       contentEl.style.transition = 'none';
-      //       contentEl.ontransitionend = null;
-      //     }, 500);
-      //   }
-      // };
     }
   };
 
@@ -112,6 +102,7 @@ const Home = () => {
       >
         <div className='cover left' ref={leftCoverRef}>
           <h2>John's Portfolio</h2>
+          <p>({isMobile ? 'Tap' : 'Hover'} to open)</p>
           <button className='open_btn' onClick={hanldeBookOpen}>
             Open
           </button>

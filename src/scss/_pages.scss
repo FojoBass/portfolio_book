@@ -1,8 +1,5 @@
 @use 'config' as *;
 
-// TODO BIG CHANGE
-// TODO MAKE THE ENTIRE BOOK TO RECLINE, AND NOT JUST THE COVERS
-
 #book {
   #content_wrapper {
     height: 100%;
@@ -150,7 +147,6 @@
 
       &.front {
         transform: rotateY(180deg) translateZ(1px);
-        // transform: rotateY(180deg) translateZ(-1px);
         z-index: 1;
         transition: z-index linear 50ms calc($trans_slow/2);
       }
