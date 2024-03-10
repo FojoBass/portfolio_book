@@ -23,6 +23,7 @@ const Home = () => {
   const hanldeBookOpen = () => {
     if (wrapRef?.current && leftCoverRef?.current && contentRef?.current) {
       wrapRef.current.classList.add('open');
+      wrapRef.current.classList.remove('hover');
       leftCoverRef.current && leftCoverRef.current.classList.add('turn');
 
       wrapRef.current.ontransitionend = () => {
@@ -32,15 +33,15 @@ const Home = () => {
         }
       };
 
-      contentRef.current.ontransitionend = () => {
-        if (contentRef.current) {
-          const contentEl = contentRef.current;
-          delay(() => {
-            contentEl.style.transition = 'none';
-            contentEl.ontransitionend = null;
-          }, 500);
-        }
-      };
+      // contentRef.current.ontransitionend = () => {
+      //   if (contentRef.current) {
+      //     const contentEl = contentRef.current;
+      //     delay(() => {
+      //       contentEl.style.transition = 'none';
+      //       contentEl.ontransitionend = null;
+      //     }, 500);
+      //   }
+      // };
     }
   };
 
@@ -95,7 +96,20 @@ const Home = () => {
         isMobile ? 'mobile' : ''
       } ${disablePointer ? 'disable' : ''}`}
     >
-      <div className='cover_wrapper' ref={wrapRef}>
+      <div
+        className='cover_wrapper'
+        ref={wrapRef}
+        onMouseOver={(e) => {
+          console.log(e.target);
+
+          if (!e.currentTarget.classList.contains('open'))
+            (e.currentTarget as HTMLElement).classList.add('hover');
+        }}
+        onMouseLeave={(e) => {
+          if (!e.currentTarget.classList.contains('open'))
+            (e.currentTarget as HTMLElement).classList.remove('hover');
+        }}
+      >
         <div className='cover left' ref={leftCoverRef}>
           <h2>John's Portfolio</h2>
           <button className='open_btn' onClick={hanldeBookOpen}>

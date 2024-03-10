@@ -50,23 +50,13 @@ const Contact = () => {
             const contentEl = contentRef.current;
 
             leftCoverEl.classList.remove('turn');
-            leftCoverEl.style.transform =
-              'rotateX(0deg) rotateY(0deg) translateZ(2px)';
             setDisablePointer && setDisablePointer(true);
 
-            delay(() => {
-              wrapEl.style.zIndex = '100';
-            }, 200 * leafRefs.current.length);
-
             leftCoverEl.ontransitionend = () => {
-              leftCoverEl.removeAttribute('style');
-              contentEl.style.transition =
-                'opacity ease 0.1s 300ms, transform ease 10ms 0.8s';
               wrapEl.style.transition = 'z-index 10ms 2.5s';
 
               delay(() => {
                 wrapEl.classList.remove('open');
-                wrapEl.removeAttribute('style');
               }, 500);
 
               delay(() => {
@@ -89,10 +79,6 @@ const Contact = () => {
             delay(() => {
               contentEl.style.transform = 'translateX(4px)';
             }, 200);
-
-            delay(() => {
-              contentEl.style.display = 'none';
-            }, 2500);
           }
         }
 

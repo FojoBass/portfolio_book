@@ -1,16 +1,17 @@
 @use 'config' as *;
 
+// TODO BIG CHANGE
+// TODO MAKE THE ENTIRE BOOK TO RECLINE, AND NOT JUST THE COVERS
+
 #book {
   #content_wrapper {
-    opacity: 0;
-    visibility: hidden;
     height: 100%;
     width: 100%;
     align-items: center;
     display: flex;
     transition: opacity ease 0.1s 300ms, transform ease 10ms 820ms;
     position: relative;
-    transform: translateX(4px);
+    transform: translateX(4px) translateZ(0px);
   }
 
   .leaf {
@@ -38,7 +39,6 @@
       background: $bg_page;
       height: 100%;
       width: 95%;
-      box-shadow: -1px 0 5px -2px #c4c4c4b3;
 
       .page_wrapper {
         overflow-y: auto;
@@ -150,6 +150,7 @@
 
       &.front {
         transform: rotateY(180deg) translateZ(1px);
+        // transform: rotateY(180deg) translateZ(-1px);
         z-index: 1;
         transition: z-index linear 50ms calc($trans_slow/2);
       }
