@@ -11,10 +11,7 @@ const EduServ = () => {
 
   return !isMidScreen ? (
     <LeafletLayout id='2'>
-      <div
-        suppressHydrationWarning
-        className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
-      >
+      <div className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}>
         <div className='page_wrapper'>
           <h1 className='page_title'>Education</h1>
 
@@ -31,10 +28,7 @@ const EduServ = () => {
         <PageFooter id='2' isEven={false} pageCount={3} />
       </div>
 
-      <div
-        suppressHydrationWarning
-        className={`page back ${isWebkit ? 'webkit' : 'not_webkit'}`}
-      >
+      <div className={`page back ${isWebkit ? 'webkit' : 'not_webkit'}`}>
         <div className='page_wrapper'>
           <h1 className='page_title'>Services</h1>
 
@@ -56,10 +50,7 @@ const EduServ = () => {
   ) : (
     <>
       <LeafletLayout id='3'>
-        <div
-          suppressHydrationWarning
-          className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
-        >
+        <div className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}>
           <div className='page_wrapper'>
             <h1 className='page_title'>Education</h1>
 
@@ -80,10 +71,7 @@ const EduServ = () => {
       </LeafletLayout>
 
       <LeafletLayout id='4'>
-        <div
-          suppressHydrationWarning
-          className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
-        >
+        <div className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}>
           <div className='page_wrapper'>
             <h1 className='page_title'>Services</h1>
 

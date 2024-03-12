@@ -90,8 +90,6 @@ const Home = () => {
         className='cover_wrapper'
         ref={wrapRef}
         onMouseOver={(e) => {
-          console.log(e.target);
-
           if (!e.currentTarget.classList.contains('open'))
             (e.currentTarget as HTMLElement).classList.add('hover');
         }}

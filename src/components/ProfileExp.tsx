@@ -44,7 +44,6 @@ const ProfileExp = () => {
   return !isMidScreen ? (
     <LeafletLayout id='1'>
       <div
-        suppressHydrationWarning
         className={`page front profile ${isWebkit ? 'webkit' : 'not_webkit'}`}
       >
         <div className='page_wrapper'>
@@ -74,10 +73,7 @@ const ProfileExp = () => {
         <PageFooter id='1' isEven={false} pageCount={1} />
       </div>
 
-      <div
-        suppressHydrationWarning
-        className={`page back ${isWebkit ? 'webkit' : 'not_webkit'}`}
-      >
+      <div className={`page back ${isWebkit ? 'webkit' : 'not_webkit'}`}>
         <div className='page_wrapper'>
           <h1 className='page_title'>Work Experience</h1>
 
@@ -98,7 +94,6 @@ const ProfileExp = () => {
     <>
       <LeafletLayout id='1'>
         <div
-          suppressHydrationWarning
           className={`page front profile ${isWebkit ? 'webkit' : 'not_webkit'}`}
         >
           <div className='page_wrapper'>
@@ -132,10 +127,7 @@ const ProfileExp = () => {
       </LeafletLayout>
 
       <LeafletLayout id='2'>
-        <div
-          suppressHydrationWarning
-          className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
-        >
+        <div className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}>
           <div className='page_wrapper'>
             <h1 className='page_title'>Work Experience</h1>
 

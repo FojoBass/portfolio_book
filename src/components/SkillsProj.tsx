@@ -12,10 +12,7 @@ const SkillsProj = () => {
 
   return !isMidScreen ? (
     <LeafletLayout id='3'>
-      <div
-        suppressHydrationWarning
-        className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
-      >
+      <div className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}>
         <div className='page_wrapper'>
           <h1 className='page_title'>Skills</h1>
           <div className='skills_wrapper'>
@@ -52,10 +49,7 @@ const SkillsProj = () => {
         <PageFooter id='3' isEven={false} pageCount={5} />
       </div>
 
-      <div
-        suppressHydrationWarning
-        className={`page back proj ${isWebkit ? 'webkit' : 'not_webkit'}`}
-      >
+      <div className={`page back proj ${isWebkit ? 'webkit' : 'not_webkit'}`}>
         <div className='page_wrapper'>
           <h1 className='page_title'>Latest Projects</h1>
 
@@ -96,10 +90,7 @@ const SkillsProj = () => {
   ) : (
     <>
       <LeafletLayout id='5'>
-        <div
-          suppressHydrationWarning
-          className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
-        >
+        <div className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}>
           <div className='page_wrapper'>
             <h1 className='page_title'>Skills</h1>
             <div className='skills_wrapper'>
@@ -141,7 +132,6 @@ const SkillsProj = () => {
 
       <LeafletLayout id='6'>
         <div
-          suppressHydrationWarning
           className={`page front proj ${isWebkit ? 'webkit' : 'not_webkit'}`}
         >
           <div className='page_wrapper'>

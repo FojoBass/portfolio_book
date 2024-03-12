@@ -96,10 +96,7 @@ const Contact = () => {
 
   return !isMidScreen ? (
     <LeafletLayout id='4'>
-      <div
-        suppressHydrationWarning
-        className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
-      >
+      <div className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}>
         <div className='page_wrapper'>
           <h1 className='page_title'>Contact Me</h1>
 
@@ -133,10 +130,7 @@ const Contact = () => {
         <PageFooter id='4' isEven={false} pageCount={7} />
       </div>
 
-      <div
-        suppressHydrationWarning
-        className={`page back end ${isWebkit ? 'webkit' : 'not_webkit'}`}
-      >
+      <div className={`page back end ${isWebkit ? 'webkit' : 'not_webkit'}`}>
         <div className='page_wrapper'>
           <p className='text'>
             The End
@@ -159,10 +153,7 @@ const Contact = () => {
   ) : (
     <>
       <LeafletLayout id='7'>
-        <div
-          suppressHydrationWarning
-          className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}
-        >
+        <div className={`page front ${isWebkit ? 'webkit' : 'not_webkit'}`}>
           <div className='page_wrapper'>
             <h1 className='page_title'>Contact Me</h1>
 
@@ -200,10 +191,7 @@ const Contact = () => {
       </LeafletLayout>
 
       <LeafletLayout id='8'>
-        <div
-          suppressHydrationWarning
-          className={`page front end ${isWebkit ? 'webkit' : 'not_webkit'}`}
-        >
+        <div className={`page front end ${isWebkit ? 'webkit' : 'not_webkit'}`}>
           <div className='page_wrapper'>
             <p className='text'>
               The End
